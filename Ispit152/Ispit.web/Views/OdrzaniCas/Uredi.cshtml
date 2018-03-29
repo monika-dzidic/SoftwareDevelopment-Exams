@@ -1,0 +1,41 @@
+﻿@model OCUrediVM
+
+<br />
+<form asp-action="SnimiUredjivanje">
+    <input name="OdrzaniCasId" value="@Model.OdrzaniCasId" hidden/>
+    Nastavnik: <input name="Nastavik" value="@Model.Nastavnik"/>
+    <br />
+    <br />
+
+    Datum: <input name="Datum" value="@Model.Datum" type="date"/>
+    <br />
+    <br />
+
+    Akademska godina: <input name="AkademskaGodina" value="@Model.AkademskaGodina" />
+    <br />
+    <br />
+
+    Predmet: <input name="Predmet" value="@Model.Predmet"/>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-default">Snimi</button>
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div id="Ucenici">
+    
+</div>
+
+<script>
+    $("document").ready(function () {
+        $.ajax({
+            url: "/Ucenik/Index?OdrzaniCasId=@Model.OdrzaniCasId",
+            success: function (data) {
+                $("#Ucenici").html(data);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿@model FDodajVM
+
+<br />
+<form asp-action="SnimiDodavanjeFakture">
+    Klijent: 
+    <select name="KlijentId">
+        @foreach (var item in Model.Klijenti)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Datum:
+    <input name="Datum" type="date" required/>
+    <br />
+    <br />
+
+    Ponude bez fakure:
+    <select name="PonudaId">
+        <option value="null">(Odaberite ponudu)</option>
+        @foreach (var item in Model.PonudeBezFakture)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    <button class="btn btn-default" type="submit">Snimi</button>
+</form>

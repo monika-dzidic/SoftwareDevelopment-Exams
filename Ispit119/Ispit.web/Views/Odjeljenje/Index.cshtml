@@ -1,0 +1,31 @@
+﻿@model OIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Skolska godina</td>
+            <td>Razred</td>
+            <td>Oznaka</td>
+            <td>Razrednik</td>
+            <td>Prebacen</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Odjeljenja)
+        {
+            <tr>
+                <td>@item.SkolskaGodina</td>
+                <td>@item.Razred</td>
+                <td>@item.Oznaka</td>
+                <td>@item.Razrednik</td>
+                <td>@item.PrebacenUViseOdjeljenje</td>
+                <td><a href="/Odjeljenje/Detalji?OdjeljenjeId=@item.OdjeljenjeId" class="btn btn-default">Detalji</a> | <a href="/Odjeljenje/Izbrisi?OdjeljenjeId=@item.OdjeljenjeId" class="btn btn-default ObrisiOdjeljenje">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Odjeljenje/Dodaj" class="btn btn-default">Dodaj odjeljenje</a>
+

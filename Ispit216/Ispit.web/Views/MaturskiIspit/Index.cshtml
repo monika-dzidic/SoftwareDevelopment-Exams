@@ -1,0 +1,28 @@
+﻿@model IIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Datum</td>
+            <td>Odjeljenje</td>
+            <td>Ispitivac</td>
+            <td>Prosjecni bodovi</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MaturskiIspiti)
+        {
+            <tr>
+                <td>@item.Datum</td>
+                <td>@item.Odjeljenje</td>
+                <td>@item.Ispitivac</td>
+                <td>@item.ProsjecniBodovi</td>
+                <td><a href="/MaturskiIspit/Detalji?MaturskiIspitId=@item.IspitId" class="btn btn-default">Detalji</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/MaturskiIspit/Dodaj" class="btn btn-default">Dodaj ispit</a>

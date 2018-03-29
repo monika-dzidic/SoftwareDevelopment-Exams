@@ -1,0 +1,23 @@
+﻿@model NIndexVM
+
+<br />
+Nastavnik:
+<select>
+    <option value="0">(Odaberite)</option>
+    @foreach(var item in Model.Nastavnici)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+</select>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<script>
+    $("document").ready(function () {
+        $("select").on("change", function () {
+            var selectedVal = $(this).val();
+            window.location.href = "/OdrzaniCas/Index?NastavnikId=" + selectedVal;
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿@model UUrediVM
+
+<br />
+<form>
+    <input name="OdrzaniCasDetaljiId" value="@Model.OdrzaniCasDetaljiId" hidden/>
+    Ucenik: <input value="@Model.Ucenik" />
+    <br />
+    <br />
+
+    Bodovi: <input name="Bodovi" type="number" value="@Model.Bodovi"/>
+    <br />
+    <br />
+
+    <button id="btnSnimiUredjivanje" class="btn btn-default">Snimi</button>
+</form>
+
+<script>
+    $("document").ready(function () {
+        $("#btnSnimiUredjivanje").on("click", function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "/Ucenik/SnimiUredjivanje",
+                data: $("form").serialize(),
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>

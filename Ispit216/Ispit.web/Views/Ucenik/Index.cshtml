@@ -1,0 +1,51 @@
+﻿@model UIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Ucenik</td>
+            <td>Opci uspjeh</td>
+            <td>Bodovi</td>
+            <td>Oslobodjen</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Ucenici)
+        {
+            <tr>
+                <td>@item.Ucenik</td>
+                <td>@item.OpciUspjeh</td>
+                <td><input name="Bodovi" id="@item.MaturskiIspitStavkaId" class="inputBodovi" value="@item.Bodovi"/></td>
+                <td>@item.Oslobodjen</td>
+                <td><button btnUrediId="@item.MaturskiIspitStavkaId" class="btn btn-default btnUredi">Uredi</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $("document").ready(function () {
+        $(".btnUredi").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("btnUrediId");
+            $.ajax({
+                url: "/Ucenik/Uredi?MaturskiIspitStavkaId=" + id,
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+        $(".inputBodovi").on("change", function () {
+            var val = $(this).val();
+            var id = $(this).attr("id");
+            $.ajax({
+                url: "/Ucenik/PromjeniBodove?MaturskiIspitStavkaId=" + id + "&Bodovi=" + val,
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>

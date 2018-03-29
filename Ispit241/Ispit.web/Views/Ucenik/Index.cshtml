@@ -1,0 +1,67 @@
+﻿@model UIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Ucenik</td>
+            <td>Ocjena</td>
+            <td>Prisutan</td>
+            <td>Opravdano odsutan</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model.Ucenici)
+        {
+            <tr>
+                <td>@x.Ucenik</td>
+                <td>@x.Ocjena</td>
+                <td><button btnPrisustvoId="@x.OdrzaniCasDetaljiId" value="@x.Prisutan" class="btn btn-default btnPrisustvo">@x.Prisutan</button></td>
+                <td>@x.OpravdanoOdsutan</td>
+                <td><button btnUrediId="@x.OdrzaniCasDetaljiId" class="btn btn-default btnUredi">Uredi</button></td>
+            </tr>
+        }
+     </tbody>
+</table>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<script>
+    $("document").ready(function () {
+        $(".btnPrisustvo").each(function (event) {
+            var val = $(this).val();
+            $(this).css("color", "white");
+            if (val == "Da")
+            {
+                $(this).css("background-color", "green");
+            }
+            else
+            {
+                $(this).css("background-color", "red");
+            }
+            
+        });
+        $(".btnPrisustvo").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("btnPrisustvoId");
+            $.ajax({
+                url: "/Ucenik/PromjeniPrisustvo?OdrzaniCasDetaljiId=" + id,
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+        $(".btnUredi").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("btnUrediId");
+            $.ajax({
+                url: "/Ucenik/Uredi?OdrzaniCasDetaljiId=" + id,
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>

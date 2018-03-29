@@ -1,0 +1,41 @@
+﻿@model UUrediVM
+
+<br />
+<form>
+    <input name="OdrzaniCasDetaljiId" value="@Model.OdrzaniCasDetaljiId" hidden/>
+    Ucenik: <input value="@Model.Ucenik"/>
+    <br />
+    <br />
+
+    @if (Model.Prisustvo == false)
+    {
+        <label>Ocjena:</label>
+        <input name="Ocjena" value="@Model.Ocjena">
+        <br />
+        <br />
+    }
+    else
+    {
+        <label>Opravdano prisutan:</label>
+        <input name="OpravdanoPrisutan" value="@Model.OpravdanoOdsutan"/>
+        <br />
+        <br />
+    }
+    <button type="submit" class="btn btn-default">Snimi</button>
+</form>
+
+<script>
+    $("document").ready(function () {
+        $("form").on("submit", function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/Ucenik/Uredi",
+                data: $(this).serialize(),
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>

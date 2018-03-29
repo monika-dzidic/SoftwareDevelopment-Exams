@@ -1,0 +1,36 @@
+﻿@model ODetaljiVM
+
+<br />
+
+Skolska godina: <input value="@Model.SkolskaGodina"/>
+<br /><br />
+
+Razred: <input value="@Model.Razred" />
+<br /><br />
+
+Oznaka: <input value="@Model.Oznaka" />
+<br /><br />
+
+Razrednik: <input value="@Model.Razrednik" />
+<br /><br />
+
+Broj predmeta: <input value="@Model.BrojPredmeta" />
+<br /><br />
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div id="Ucenici">
+    
+</div>
+
+<script>
+    $("document").ready(function () {
+        $.ajax({
+            url: "/Ucenik/Index?OdjeljenjeId=@Model.OdjeljenjeId",
+            success: function (data) {
+                $("#Ucenici").html(data);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,29 @@
+﻿@model IDetaljiVM
+
+<br />
+Ispitivac: <input value="@Model.Ispitivac"/>
+<br /><br />
+
+Datum: <input value="@Model.Datum"/>
+<br /><br />
+
+Odjeljenje: <input value="@Model.Odjeljenje"/>
+<br /><br />
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div id="Ucenici">
+    
+</div>
+
+<script>
+    $("document").ready(function () {
+        $.ajax({
+            url: "/Ucenik/Index?MaturskiIspitId=@Model.MaturskiIspitId",
+            success: function (data) {
+                $("#Ucenici").html(data);
+            }
+        });
+    });
+</script>

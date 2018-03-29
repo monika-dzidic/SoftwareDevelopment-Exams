@@ -1,0 +1,40 @@
+﻿@model UDodajVM
+
+<br />
+<form asp-action="Dodaj" method="post">
+    Ljekar uputio: 
+    <select name="LjekarUputioId">
+        @foreach (var item in Model.Ljekari)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Datum: <input name="Datum" type="date"/>
+    <br />
+    <br />
+
+    Pacijent:
+    <select name="PacijentId">
+        @foreach (var item in Model.Pacijent)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Vrsta pretrage:
+    <select name="VrstaPretrageId">
+        @foreach (var item in Model.VrstaPretrage)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-default">Snimi</button>
+</form>

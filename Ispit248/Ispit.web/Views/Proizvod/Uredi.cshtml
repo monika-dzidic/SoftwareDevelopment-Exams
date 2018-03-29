@@ -1,0 +1,33 @@
+﻿@model PUrediVM
+
+<br />
+<form id="FormaUrediProizvod">
+    <input name="StavkaId" value="@Model.StavkaId" hidden/>
+    Proizvod <input name="Proizvod" value="@Model.Proizvod" readonly/>
+    <br />
+    <br />
+
+    Kolicina: <input name="Kolicina" />
+    <br />
+    <br />
+
+</form> 
+
+<button id="SnimiPromjeneProizvoda" class="btn btn-default">Snimi promjene</button>
+
+<script>
+    $("documet").ready(function (event) {
+        $("#SnimiPromjeneProizvoda").on("click", function (event) {
+            event.preventDefault();
+            var forma = $("#FormaUrediProizvod
+            $.ajax({
+                type: "POST",
+                url: "/Proizvod/SnimiPromjene",
+                data: forma.serialize(),
+                success: function (data) {
+                    $("#Proizvodi").html(data);
+                }    
+            });
+        });
+    });
+</script>

@@ -1,0 +1,39 @@
+﻿@model UDetaljiVM
+
+<br />
+Datum: <input value="@Model.Datum"/>
+<br /><br />
+
+Pacijent: <input value="@Model.Pacijent"/>
+<br /><br />
+
+Datum rezultata: 
+@if (Model.DatumRezultata == null)
+{
+    <input name="Datum" type="date"/>
+}
+else
+{
+    <input name="Datum" value="@Model.DatumRezultata" />
+}
+<br /><br />
+
+Zavrsen unos: <a href="#" class="btn btn-default">Zakljucaj</a>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div id="Rezultati">
+    
+</div>
+
+<script>
+    $("document").ready(function () {
+        $.ajax({
+            url: "/Rezultat/Index?UputnicaId=@Model.UputnicaId",
+            success: function (data) {
+                $("#Rezultati").html(data);
+            }
+        });
+    });
+</script>

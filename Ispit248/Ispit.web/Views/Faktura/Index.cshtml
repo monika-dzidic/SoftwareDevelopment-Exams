@@ -1,0 +1,39 @@
+﻿@model FIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Datum</td>
+            <td>Klijent</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Fakture)
+        {
+            <tr>
+                <td>@item.Datum</td>
+                <td>@item.Klijent</td>
+                <td><a href="/Faktura/Detalji?FakturaId=@item.FakutraId" class="btn btn-default">Detalji</a> | <a aId="@item.FakutraId" class="btn btn-default aObrisiFakturu">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Faktura/Dodaj" class="btn btn-default">Dodaj fakturu</a>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<script>
+    $("document").ready(function () {
+        $(".aObrisiFakturu").on("click", function () {
+            var id = $(this).attr("aId");
+            $.get("/Faktura/Obrisi?FakturaId=" + id, function () {
+                location.reload();
+            });
+        });
+    });
+</script>

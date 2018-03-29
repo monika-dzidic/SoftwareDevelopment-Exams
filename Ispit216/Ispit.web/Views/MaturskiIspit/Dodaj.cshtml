@@ -1,0 +1,28 @@
+﻿@model IDodajVM
+
+<br />
+<form asp-action="SnimiDodavanje">
+    Nastavnik: 
+    <select name="NastavnikId">
+        @foreach (var item in Model.Nastavnici)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Datum: <input name="Datum" type="date"/>
+
+    Odjeljenje:
+    <select name="OdjeljenjeId">
+        @foreach (var item in Model.Odjeljenja)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-default">Snimi</button>
+</form>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ispit.web", "Ispit.web\Ispit.web.csproj", "{99F088DA-A512-44CD-BB75-DCC929A522F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ispit.data", "Ispit.data\Ispit.data.csproj", "{EE2905EE-928C-4A80-8705-4F32C887B4D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99F088DA-A512-44CD-BB75-DCC929A522F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F088DA-A512-44CD-BB75-DCC929A522F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F088DA-A512-44CD-BB75-DCC929A522F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F088DA-A512-44CD-BB75-DCC929A522F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2905EE-928C-4A80-8705-4F32C887B4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2905EE-928C-4A80-8705-4F32C887B4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2905EE-928C-4A80-8705-4F32C887B4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2905EE-928C-4A80-8705-4F32C887B4D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E86DEA5F-8BC3-4384-B410-38A241056F9F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+c:\users\monika\source\repos\Ispit231\Ispit.data\bin\Debug\netcoreapp2.0\Ispit.data.deps.json
+c:\users\monika\source\repos\Ispit231\Ispit.data\bin\Debug\netcoreapp2.0\Ispit.data.dll
+c:\users\monika\source\repos\Ispit231\Ispit.data\obj\Debug\netcoreapp2.0\Ispit.data.csproj.CoreCompileInputs.cache
+c:\users\monika\source\repos\Ispit231\Ispit.data\obj\Debug\netcoreapp2.0\Ispit.data.AssemblyInfoInputs.cache
+c:\users\monika\source\repos\Ispit231\Ispit.data\obj\Debug\netcoreapp2.0\Ispit.data.AssemblyInfo.cs
+c:\users\monika\source\repos\Ispit231\Ispit.data\obj\Debug\netcoreapp2.0\Ispit.data.csprojResolveAssemblyReference.cache
+c:\users\monika\source\repos\Ispit231\Ispit.data\bin\Debug\netcoreapp2.0\Ispit.data.pdb
+c:\users\monika\source\repos\Ispit231\Ispit.data\obj\Debug\netcoreapp2.0\Ispit.data.dll
+c:\users\monika\source\repos\Ispit231\Ispit.data\obj\Debug\netcoreapp2.0\Ispit.data.pdb

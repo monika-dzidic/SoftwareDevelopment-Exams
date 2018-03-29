@@ -1,0 +1,56 @@
+﻿@model PIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Proizvod</td>
+            <td>Cijena</td>
+            <td>Kolicina</td>
+            <td>Popust</td>
+            <td>Iznos</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Proizvodi)
+        {
+            <tr>
+                <td>@item.Proizvod</td>
+                <td>@item.Cijena</td>
+                <td>@item.Kolicina</td>
+                <td>@item.Popust</td>
+                <td>@item.Iznos</td>
+                <td><a aId="@item.StavkaId" class="btn btn-default aProizvodUredi">Uredi</a> | <a aId2="@item.StavkaId" class="btn btn-default aProizvodObrisi">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button id="BtnDodajProizvod" class="btn btn-default">Dodaj proizvod</button>
+
+<script>
+    $("document").ready(function () {
+        $(".aProizvodUredi").on("click", function () {
+            var id = $(this).attr("aId");
+            $.get("/Proizvod/Uredi?StavkaId=" + id, function (data) {
+                $("#Proizvodi").html(data);
+            });
+        });
+        $(".aProizvodObrisi").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("aId2");
+            $.ajax({
+                type: "POST",
+                url: "/Proizvod/Obrisi?StavkaId=" + id,
+                success: function (data) {
+                    $("#Proizvodi").html(data);
+                }
+            });
+        });
+        $("#BtnDodajProizvod").on("click", function () {
+            $.get("/Proizvod/Dodaj?FakturaId=" + @Model.FakturaId, function (data) {
+                $("#Proizvodi").html(data);
+            });
+        });
+    });
+</script>

@@ -1,0 +1,39 @@
+﻿@model ODodajVM
+
+<br />
+<form asp-action="SnimiDodavanje">
+    Skolska godina: <input name="SkolskaGodina"/>
+    <br />
+    <br />
+
+    Razred: <input name="Razred" type="number"/>
+    <br />
+    <br />
+
+    Oznaka: <input name="Oznaka"/>
+    <br />
+    <br />
+
+    Razrednik:
+    <select name="RazrednikId">
+        @foreach (var item in Model.Nastavnici)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Preuzmi ucenike iz nizeg odjeljenja: 
+    <select name="OdjeljenjeId">
+        <option value="0">(Odaberite)</option>
+        @foreach (var item in Model.NizaOdjeljenja)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+    
+    <button type="submit" class="btn btn-default">Dodaj</button>
+</form>

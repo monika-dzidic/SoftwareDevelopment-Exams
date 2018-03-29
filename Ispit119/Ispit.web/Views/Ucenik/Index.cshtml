@@ -1,0 +1,59 @@
+﻿@model UIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Broj u dnevniku</td>
+            <td>Ucenik</td>
+            <td>Broj zakljucenih ocjena</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Ucenici)
+        {
+            <tr>
+                <td>@item.BrojUDnevniku</td>
+                <td>@item.Ucenik</td>
+                <td>@item.BrojZakljucenihOcjena</td>
+                <td><a aIdObrisi="@item.OdjeljenjeStavkaId" class="btn btn-default aObrisiUcenika">Obrisi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a id="DodajUcenika" class="btn btn-default">Dodaj ucenika</a>
+<a id="RekonstruirajBrojeve" class="btn btn-default">Rekonstruiraj brojeve</a>
+
+<script>
+    $("document").ready(function () {
+        $("#DodajUcenika").on("click", function () {
+            $.ajax({
+                url: "/Ucenik/Dodaj?OdjeljenjeId=@Model.OdjeljenjeId",
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+        $(".aObrisiUcenika").on("click", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("aIdObrisi");
+            $.ajax({
+                type: "POST",
+                url: "/Ucenik/Obrisi?UpisUOdjeljenjeId=" + id,
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                } 
+            });
+        });
+        $("#RekonstruirajBrojeve").on("click", function () {
+            $.ajax({
+                url: "/Ucenik/RekonstruirajBrojeve?OdjeljenjeId=@Model.OdjeljenjeId",
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>

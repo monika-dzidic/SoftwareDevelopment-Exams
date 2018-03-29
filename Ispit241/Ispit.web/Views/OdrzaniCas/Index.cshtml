@@ -1,0 +1,30 @@
+﻿@model OCIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Datum</td>
+            <td>Odjeljenje</td>
+            <td>Predmet</td>
+            <td>Prisutnih od ukupno</td>
+            <td>Najbolji ucenik</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OdrzaniCasovi)
+        {
+            <tr>
+                <td>@item.Datum</td>
+                <td>@item.Odjeljenje</td>
+                <td>@item.Predmet</td>
+                <td>@item.PrisutnihUcenika od @item.UkupnoUcenika</td>
+                <td>@item.NajboljiUcenik</td>
+                <td><a asp-action="Detalji" asp-route-OdrzaniCasId="@item.OdrzaniCasId" class="btn btn-default">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Dodaj" asp-route-NastavnikId="@Model.NastavnikId" class="btn btn-default">Dodaj odrzani cas</a>

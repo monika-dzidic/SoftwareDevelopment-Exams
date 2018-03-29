@@ -1,0 +1,35 @@
+﻿@model UIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Uputio</td>
+            <td>Pacijent</td>
+            <td>Vrsta pretrage</td>
+            <td>Datum rezultata</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Uputnice)
+        {
+            <tr>
+                <td>@item.Datum | @item.UputioLjekar</td>
+                <td>@item.Pacijent</td>
+                <td>@item.VrstaPretrage</td>
+                @if (item.DatumRezultata == null)
+                {
+                    <td>(nije evidentirano)</td>
+                }
+                else
+                {
+                    <td>@item.DatumRezultata</td>
+                }
+                <td><a href="/Uputnica/Detalji?UputnicaId=@item.UputnicaId">Detalji</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Dodaj" class="btn btn-default">Dodaj novu uputnicu</a>

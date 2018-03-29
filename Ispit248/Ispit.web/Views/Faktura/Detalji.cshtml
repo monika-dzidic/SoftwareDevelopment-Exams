@@ -1,0 +1,22 @@
+﻿@model FDetaljiVM
+
+<br />
+Klijent: <input name="Klijent" value="@Model.Klijent" readonly/>
+<br /><br />
+
+Datum: <input value="@Model.Datum" readonly/>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+<div id="Proizvodi">
+
+</div>
+
+<script>
+    $("document").ready(function () {
+        $.get("/Proizvod/Index?FakturaId=@Model.FakutraId", function (data) {
+            $("#Proizvodi").html(data);
+        });
+    });
+</script>

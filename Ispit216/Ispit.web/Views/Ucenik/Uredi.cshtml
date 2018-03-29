@@ -1,0 +1,31 @@
+﻿@model UUrediVM
+
+<br />
+<form id="UrediUcenika">
+    <input name="MaturskiIspitStavkaId" value="@Model.MaturskiIspitStavkaId"/>
+    Ucenik: <input value="@Model.Ucenik"/>
+    <br />
+    <br />
+
+    Bodovi: <input name="Bodovi" value="@Model.Bodovi"/>
+    <br />
+    <br />
+
+</form>
+<button id="btnSnimiUredjivanjeUcenika" class="btn btn-default">Snimi</button>
+
+<script>
+    $("document").ready(function () {
+        $("#btnSnimiUredjivanjeUcenika").on("click", function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/Ucenik/SnimiDodavanje",
+                data: $("#UrediUcenika").serialize(),
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>

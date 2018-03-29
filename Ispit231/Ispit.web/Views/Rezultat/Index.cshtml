@@ -1,0 +1,108 @@
+﻿@model RIndexVM
+
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>Pretraga</td>
+            <td>Izmjerena vrijednost</td>
+            <td>JMJ</td>
+            <td>Referentne vrijednosti</td>
+            <td>Akcija</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Rezultati)
+        {
+            <tr>
+                <td>@item.Pretrage</td>
+                @if (item.IsNumericka)
+                {
+                    if (item.IzmjerenaVrijednost != null)
+                    {
+                        <td><input inpVrijednostId="@item.RezultatId" class="inpVrijednost" value="@item.IzmjerenaVrijednost" /></td>
+                    }
+                    else
+                    {
+                        <td>(nije evidentirano)</td>
+                    }
+                }
+                else
+                {
+                    <td>
+                        <select ModalitetSelId="@item.RezultatId" class="ModalitetSel">
+                            @foreach (var x in item.Modaliteti)
+                            {
+                                <option value="@x.Value">@x.Text</option>
+                            }
+                        </select>
+                    </td>
+                }
+                @if (item.JMJ != null)
+                {
+                    <td>@item.JMJ</td>
+                    <td id="@item.RezultatId" class="RefMaxMin">@item.ReferentnaVrijednostMin do @item.ReferentnaVrijednostMax</td>
+                }
+                else
+                {
+                    <td>(modalitet)</td>
+                    <td>@item.ModalitetiNabrajanja</td>
+                }
+                <td><a href="#" class="btn btn-default">Uredi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $("document").ready(function () {
+        $(".inpVrijednost").on("change", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("inpVrijednostId");
+            var val = $(this).val();
+            $.ajax({
+                url: "/Rezultat/PromjeniIzracunatuVrijednost?RezultatId=" + id + "&Vrijednost=" + val,
+                success: function (data) {
+                    $("#Rezultati").html(data);
+                }
+            });
+        });
+        $(".ModalitetSel").on("change", function (event) {
+            event.preventDefault();
+            var id = $(this).attr("ModalitetSelId");
+            var val = $(this).val();
+            $.ajax({
+                url: "/Rezultat/PromjeniModalitet?RezultatId=" + id + "&ModalitetId=" + val,
+                success: function (data) {
+                    $("#Rezultati").html(data);
+                }
+            });
+        });
+        $(".inpVrijednost").each(function () {
+            var val = $(this).val();
+            var id = $(this).attr("inpVrijednostId");//RezultatId
+            var minMax = $(".RefMaxMin");
+            for (var i = 0; i < minMax.length; i++) {
+                if (minMax[i].id == id)
+                {
+                    var vrijednosti = minMax[i].innerHTML;
+                    var minmax = vrijednosti.split(" ");
+                    if (val > minmax[0] || val < minmax[2])
+                    {
+                        $(this).css("background-color", "red");
+                    }
+                }
+            }
+        });
+        $(".ModalitetSel").each(function () {
+            var val = $(this).val();//ModalitetId
+            var id = $(this).attr("ModalitetSelId");//RezultatId
+            $.get("/Rezultat/IsRefVr?RezultatId=" + id + "&ModalitetId=" + val, function (isRef) {
+                alert(isRef);
+                if (isRef == false) {//u alert izbaci false ali ovaj uvijet nikad nije true ???
+                    $(this).css("background-color", "red");
+                }
+            });
+        });
+    });
+</script>

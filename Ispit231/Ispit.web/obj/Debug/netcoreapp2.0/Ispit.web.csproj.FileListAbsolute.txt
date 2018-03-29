@@ -1,0 +1,13 @@
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.web.deps.json
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.web.runtimeconfig.json
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.web.runtimeconfig.dev.json
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.web.dll
+c:\users\monika\source\repos\Ispit231\Ispit.web\obj\Debug\netcoreapp2.0\Ispit.web.csprojResolveAssemblyReference.cache
+c:\users\monika\source\repos\Ispit231\Ispit.web\obj\Debug\netcoreapp2.0\Ispit.web.csproj.CoreCompileInputs.cache
+c:\users\monika\source\repos\Ispit231\Ispit.web\obj\Debug\netcoreapp2.0\Ispit.web.AssemblyInfoInputs.cache
+c:\users\monika\source\repos\Ispit231\Ispit.web\obj\Debug\netcoreapp2.0\Ispit.web.AssemblyInfo.cs
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.web.pdb
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.data.dll
+c:\users\monika\source\repos\Ispit231\Ispit.web\bin\Debug\netcoreapp2.0\Ispit.data.pdb
+c:\users\monika\source\repos\Ispit231\Ispit.web\obj\Debug\netcoreapp2.0\Ispit.web.dll
+c:\users\monika\source\repos\Ispit231\Ispit.web\obj\Debug\netcoreapp2.0\Ispit.web.pdb

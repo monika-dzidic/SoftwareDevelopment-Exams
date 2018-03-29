@@ -1,0 +1,35 @@
+﻿@model OCDodajVM
+
+<br />
+<form asp-action="Dodaj" method="post">
+    <input name="NastavnikId" value="@Model.NastavnikId" hidden />
+    <input name="Nastavnik" value="@Model.Nastavnik" />
+    <br />
+    <br />
+
+    Datum: <input type="date" name="Datum" />
+    <br />
+    <br />
+
+    Odjeljenje:
+    <select name="OdjeljenjeId">
+        @foreach (var item in Model.Odjeljenja)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Predmet:
+    <select name="PredmetId">
+        @foreach (var item in Model.Predmeti)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-default">Snimi</button>
+</form>

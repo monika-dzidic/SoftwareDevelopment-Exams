@@ -1,0 +1,36 @@
+﻿@model UDodajVM
+
+<br />
+<form>
+    <input name="OdjeljenjeId" value="@Model.OdjeljenjeId" hidden/>
+    Ucenik: 
+    <select name="UcenikId">
+        @foreach (var item in Model.Ucenici)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+    <br />
+    <br />
+
+    Broj u dnevniku <input name="BrojUDnevniku" type="number"/>
+    <br />
+    <br />
+    
+    <button type="submit" class="btn btn-default">Dodaj</button>
+</form>
+
+<script>
+    $("document").ready(function () {
+        $("form").on("submit", function () {
+            $.ajax({
+                type: "POST",
+                url: "/Ucenik/SnimiDodavanje?OdjeljenjeId=@Model.OdjeljenjeId",
+                data: $(this).serialize(),
+                success: function (data) {
+                    $("#Ucenici").html(data);
+                }
+            });
+        });
+    });
+</script>
